@@ -36,8 +36,16 @@ function isTypingTarget(target: EventTarget | null) {
 
 function ThemeHotkey() {
   const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  // Ensure this hook component only executes DOM listeners after hydration
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
 
   React.useEffect(() => {
+    if (!mounted) return
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.repeat) {
         return
@@ -63,7 +71,7 @@ function ThemeHotkey() {
     return () => {
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [resolvedTheme, setTheme])
+  }, [mounted, resolvedTheme, setTheme])
 
   return null
 }

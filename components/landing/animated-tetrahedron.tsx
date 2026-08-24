@@ -159,6 +159,8 @@ export function AnimatedTetrahedron() {
       // Sort by z for depth
       points.sort((a, b) => a.z - b.z)
 
+      // Old coloring
+
       // Draw points
       // points.forEach((point) => {
       //   const alpha = 0.15 + (point.z + 1.5) * 0.25;

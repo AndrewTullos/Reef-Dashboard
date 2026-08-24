@@ -74,6 +74,7 @@ export function AnimatedSphere() {
       // Sort by z for depth
       points.sort((a, b) => a.z - b.z)
 
+      // Old coloring
       // Draw points
       // points.forEach((point) => {
       //   const alpha = 0.2 + (point.z + 1) * 0.4

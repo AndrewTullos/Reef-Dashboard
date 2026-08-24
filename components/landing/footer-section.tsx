@@ -3,7 +3,13 @@
 import { ArrowUpRight } from "lucide-react"
 import { AnimatedWave } from "./animated-wave"
 
-const footerLinks = {
+interface FooterLink {
+  name: string
+  href: string
+  badge?: string
+}
+
+const footerLinks: Record<string, FooterLink[]> = {
   Product: [
     { name: "Features", href: "#features" },
     { name: "How it works", href: "#how-it-works" },
@@ -84,6 +90,11 @@ export function FooterSection() {
                 <ul className="space-y-4">
                   {links.map((link) => (
                     <li key={link.name}>
+                      {link.badge && (
+                        <span className="rounded-full bg-foreground px-2 py-0.5 text-xs">
+                          {link.badge}
+                        </span>
+                      )}
                       <a
                         href={link.href}
                         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -92,23 +103,6 @@ export function FooterSection() {
                       </a>
                     </li>
                   ))}
-                  {/* {links.map((link) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.href}
-                        className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.name}
-                        {"badge" in link &&
-                          typeof link.badge === "string" &&
-                          link.badge && (
-                            <span className="rounded-full bg-foreground px-2 py-0.5 text-xs ...">
-                              {link.badge}
-                            </span>
-                          )}
-                      </a>
-                    </li>
-                  ))} */}
                 </ul>
               </div>
             ))}

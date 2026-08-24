@@ -89,14 +89,26 @@ export function FooterSection() {
                         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.name}
-                        {"badge" in link && link.badge && (
-                          <span className="rounded-full bg-foreground px-2 py-0.5 text-xs text-background">
-                            {link.badge}
-                          </span>
-                        )}
                       </a>
                     </li>
                   ))}
+                  {/* {links.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.name}
+                        {"badge" in link &&
+                          typeof link.badge === "string" &&
+                          link.badge && (
+                            <span className="rounded-full bg-foreground px-2 py-0.5 text-xs ...">
+                              {link.badge}
+                            </span>
+                          )}
+                      </a>
+                    </li>
+                  ))} */}
                 </ul>
               </div>
             ))}

@@ -62,7 +62,7 @@ export function AnimatedWave() {
           // ctx.fillStyle = isDark
           //   ? `rgba(104, 170, 165, ${alpha})` // Sea Glass #68AAA5
           //   : `rgba(11, 38, 48, ${alpha})` // Deep Ocean #0B2630
-          ctx.fillStyle = "rgb(255, 0, 255)"
+          ctx.fillStyle = "rgb(215, 111, 5)"
           ctx.fillText(chars[charIndex], px, py)
         }
       }

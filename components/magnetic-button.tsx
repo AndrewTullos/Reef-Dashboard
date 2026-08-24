@@ -20,7 +20,7 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLButtonElement>(null)
   const positionRef = useRef({ x: 0, y: 0 })
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!ref.current) return
@@ -29,9 +29,15 @@ export function MagneticButton({
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
 
-    positionRef.current = { x: x * 0.15, y: y * 0.15 }
+    positionRef.current = {
+      x: x * 0.15,
+      y: y * 0.15,
+    }
 
-    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current)
+    }
+
     rafRef.current = requestAnimationFrame(() => {
       if (ref.current) {
         ref.current.style.transform = `translate3d(${positionRef.current.x}px, ${positionRef.current.y}px, 0)`
@@ -41,7 +47,11 @@ export function MagneticButton({
 
   const handleMouseLeave = () => {
     positionRef.current = { x: 0, y: 0 }
-    if (rafRef.current) cancelAnimationFrame(rafRef.current)
+
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current)
+    }
+
     rafRef.current = requestAnimationFrame(() => {
       if (ref.current) {
         ref.current.style.transform = "translate3d(0px, 0px, 0)"
@@ -54,7 +64,8 @@ export function MagneticButton({
       "bg-foreground/95 text-background hover:bg-foreground backdrop-blur-md hover:scale-[1.02] active:scale-[0.98]",
     secondary:
       "bg-foreground/5 text-foreground hover:bg-foreground/10 backdrop-blur-xl border border-foreground/10 hover:border-foreground/20",
-    ghost: "bg-transparent text-foreground hover:bg-foreground/5 backdrop-blur-sm",
+    ghost:
+      "bg-transparent text-foreground hover:bg-foreground/5 backdrop-blur-sm",
   }
 
   const sizes = {
@@ -68,13 +79,7 @@ export function MagneticButton({
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`
-        relative overflow-hidden rounded-full font-medium
-        transition-all duration-300 ease-out will-change-transform
-        ${variants[variant]}
-        ${sizes[size]}
-        ${className}
-      `}
+      className={`relative overflow-hidden rounded-full font-medium transition-all duration-300 ease-out will-change-transform ${variants[variant]} ${sizes[size]} ${className}`}
       style={{
         transform: "translate3d(0px, 0px, 0)",
         contain: "layout style paint",

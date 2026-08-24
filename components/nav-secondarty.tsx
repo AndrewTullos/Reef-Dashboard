@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import { type Icon } from "@tabler/icons-react"
 
 import {
@@ -11,27 +12,32 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-export function NavSecondary({
-  items,
-  ...props
-}: {
-  items: {
-    title: string
-    url: string
-    icon: Icon
-  }[]
-} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+type NavSecondaryItem = {
+  title: string
+  url: string
+  icon: Icon
+}
+
+type NavSecondaryProps = {
+  items: NavSecondaryItem[]
+} & React.ComponentPropsWithoutRef<typeof SidebarGroup>
+
+export function NavSecondary({ items, ...props }: NavSecondaryProps) {
+  const router = useRouter()
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
+              <SidebarMenuButton
+                type="button"
+                onClick={() => router.push(item.url)}
+                className="w-full justify-start"
+              >
+                <item.icon />
+                <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}

@@ -84,25 +84,28 @@ export function FooterSection() {
             </div>
 
             {/* Link Columns */}
+            {/* Link Columns */}
             {Object.entries(footerLinks).map(([title, links]) => (
               <div key={title}>
                 <h3 className="mb-6 text-sm font-medium">{title}</h3>
+
                 <ul className="space-y-4">
                   {links.map((link) => (
-  <li key={link.name}>
-    {link.badge && (
-      <span className="rounded-full bg-foreground px-2 py-0.5 text-xs">
-        {link.badge}
-      </span>
-    )}
-    
-      href={link.href}
-      className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-    >
-      {link.name}
-    </a>
-  </li>
-))}
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {link.name}
+
+                        {link.badge && (
+                          <span className="rounded-full bg-foreground px-2 py-0.5 text-xs text-background">
+                            {link.badge}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}

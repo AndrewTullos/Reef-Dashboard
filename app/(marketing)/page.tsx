@@ -19,12 +19,12 @@ export default function Home() {
       <HeroSection />
       <FeaturesSection />
       <HowItWorksSection />
-      <InfrastructureSection />
+      {/* <InfrastructureSection /> */}
       <MetricsSection />
-      <IntegrationsSection />
-      <SecuritySection />
+      {/* <IntegrationsSection /> */}
+      {/* <SecuritySection /> */}
       <DevelopersSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       {/* <PricingSection /> */}
       <CtaSection />
       <FooterSection />

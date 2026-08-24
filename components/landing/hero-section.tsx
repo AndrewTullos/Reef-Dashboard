@@ -5,6 +5,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { AnimatedSphere } from "./animated-sphere"
 
+// Shader
+import { Shader, ChromaFlow, Swirl } from "shaders/react"
+import { CustomCursor } from "@/components/custom-cursor"
+import { GrainOverlay } from "@/components/grain-overlay"
+
 const words = ["patterns", "trends", "changes", "signals"]
 
 export function HeroSection() {
@@ -24,6 +29,42 @@ export function HeroSection() {
 
   return (
     <section className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+      {/* Shader background */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Shader className="h-full w-full">
+          {/* Original */}
+          {/* <Swirl
+            colorA="#1275d8"
+            colorB="#e19136"
+            speed={0.8}
+            detail={0.8}
+            blend={50}
+            coarseX={40}
+            coarseY={40}
+            mediumX={40}
+            mediumY={40}
+            fineX={40}
+            fineY={40}
+          /> */}
+
+          <ChromaFlow
+            baseColor="#0066ff"
+            upColor="#0066ff"
+            downColor="#d1d1d1"
+            leftColor="#e19136"
+            rightColor="#e19136"
+            intensity={0.9}
+            radius={1.8}
+            momentum={25}
+            maskType="alpha"
+            opacity={0.97}
+          />
+        </Shader>
+
+        {/* readability overlay */}
+        <div className="absolute inset-0 bg-background/35" />
+      </div>
+
       {/* Animated sphere background */}
       <div className="pointer-events-none absolute top-1/2 right-0 h-[600px] w-[600px] -translate-y-1/2 opacity-40 lg:h-[800px] lg:w-[800px]">
         <AnimatedSphere />
@@ -123,7 +164,7 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="group h-14 rounded-full bg-foreground px-8 text-base text-background hover:bg-foreground/90"
+              className="group h-14 rounded-full bg-[var(--button-primary)] px-8 text-base text-[var(--button-primary-foreground)] hover:bg-[var(--button-primary-hover)]"
             >
               Start tracking
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

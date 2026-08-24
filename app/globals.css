@@ -94,6 +94,10 @@
 
   --sidebar-border: oklch(0.88 0.02 195);
   --sidebar-ring: oklch(0.6 0.09 190);
+
+  --button-primary: oklch(67.5% 0.152 54.8);
+  --button-primary-hover: oklch(62% 0.16 54.8);
+  --button-primary-foreground: oklch(0.98 0 0);
 }
 
 .dark {
@@ -141,6 +145,10 @@
 
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.6 0.09 190);
+
+  --button-primary: oklch(70% 0.152 54.8);
+  --button-primary-hover: oklch(65% 0.16 54.8);
+  --button-primary-foreground: oklch(0.98 0 0);
 }
 
 @layer base {

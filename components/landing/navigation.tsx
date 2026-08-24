@@ -79,9 +79,9 @@ export function Navigation() {
             </a>
             <Button
               size="sm"
-              className={`rounded-full bg-foreground text-background transition-all duration-500 hover:bg-foreground/90 ${isScrolled ? "h-8 px-4 text-xs" : "px-6"}`}
+              className={`rounded-full bg-[var(--button-primary)] text-[var(--button-primary-foreground)] transition-all duration-500 hover:bg-[var(--button-primary-hover)] ${isScrolled ? "h-8 px-4 text-xs" : "px-6"}`}
             >
-              Start creating
+              Create Account
             </Button>
           </div>
 
@@ -151,7 +151,7 @@ export function Navigation() {
               className="h-14 flex-1 rounded-full bg-foreground text-base text-background"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Start creating
+              Create Account
             </Button>
           </div>
         </div>

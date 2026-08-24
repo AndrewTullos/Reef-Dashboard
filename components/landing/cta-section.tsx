@@ -68,7 +68,7 @@ export function CtaSection() {
                 <div className="flex flex-col items-start gap-4 sm:flex-row">
                   <Button
                     size="lg"
-                    className="group h-14 rounded-full bg-foreground px-8 text-base text-background hover:bg-foreground/90"
+                    className="group h-14 rounded-full bg-[var(--button-primary)] px-8 text-base text-[var(--button-primary-foreground)] hover:bg-[var(--button-primary-hover)]"
                   >
                     Start tracking your reef
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

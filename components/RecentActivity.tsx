@@ -47,7 +47,7 @@ const activity = [
   },
 ]
 
-export function DataTable() {
+export function RecentActivity() {
   return (
     <section className="px-4 lg:px-6">
       <div className="mb-4 flex items-end justify-between">

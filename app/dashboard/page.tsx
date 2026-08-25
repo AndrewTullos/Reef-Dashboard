@@ -1,5 +1,5 @@
 import { ChartAreaInteractive } from "@/components/chart-area-interactive"
-import { DataTable } from "@/components/data-table"
+import { RecentActivity } from "@/components/RecentActivity"
 import { SectionCards } from "@/components/section-cards"
 import { ReefOverview } from "@/components/reef-overview"
 import { ReefInsight } from "@/components/reef-insight"
@@ -25,7 +25,7 @@ export default function Page() {
 
             <ReefInsight />
 
-            <DataTable data={data} />
+            <RecentActivity data={data} />
           </div>
         </div>
       </div>

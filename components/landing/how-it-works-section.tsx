@@ -150,7 +150,7 @@ export function HowItWorksSection() {
                     {activeStep === index && (
                       <div className="mt-4 h-px overflow-hidden bg-background/20">
                         <div
-                          className="h-full w-0 bg-background"
+                          className="h-full w-0 bg-orange-500"
                           style={{
                             animation: "progress 5s linear forwards",
                           }}

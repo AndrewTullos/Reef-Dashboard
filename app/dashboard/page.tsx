@@ -1,7 +1,8 @@
 import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 import { DataTable } from "@/components/data-table"
 import { SectionCards } from "@/components/section-cards"
-import { SectionCardsTwo } from "@/components/section-cards-two"
+import { ReefOverview } from "@/components/reef-overview"
+import { ReefInsight } from "@/components/reef-insight"
 import { SiteHeader } from "@/components/site-header"
 
 import data from "./data.json"
@@ -12,16 +13,17 @@ export default function Page() {
       <SiteHeader />
 
       <div className="flex flex-1 flex-col">
-        <div className="@container/main flex flex-1 flex-col gap-2">
-          <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+        <div className="@container/main flex flex-1 flex-col">
+          <div className="flex flex-col gap-6 py-6">
+            <ReefOverview />
+
+            <SectionCards />
+
             <div className="px-4 lg:px-6">
               <ChartAreaInteractive />
             </div>
 
-            <SectionCards />
-            <div className="px-4 lg:px-6">
-              <SectionCardsTwo />
-            </div>
+            <ReefInsight />
 
             <DataTable data={data} />
           </div>

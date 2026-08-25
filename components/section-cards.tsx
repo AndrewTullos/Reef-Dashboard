@@ -1,195 +1,162 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { TrendingUpIcon, TrendingDownIcon } from "lucide-react"
+import { ArrowDownRight, ArrowRight, ArrowUpRight } from "lucide-react"
+
+import { Card } from "@/components/ui/card"
+
+const parameters = [
+  {
+    name: "Alkalinity",
+    short: "ALK",
+    value: "8.3",
+    unit: "dKH",
+    status: "Stable",
+    trend: "stable",
+    detail: "7-day avg 8.2",
+  },
+  {
+    name: "Calcium",
+    short: "CA",
+    value: "410",
+    unit: "ppm",
+    status: "Stable",
+    trend: "stable",
+    detail: "Within target range",
+  },
+  {
+    name: "Magnesium",
+    short: "MG",
+    value: "1320",
+    unit: "ppm",
+    status: "Stable",
+    trend: "stable",
+    detail: "No meaningful drift",
+  },
+  {
+    name: "pH",
+    short: "PH",
+    value: "8.15",
+    unit: "",
+    status: "Stable",
+    trend: "up",
+    detail: "+0.04 this week",
+  },
+  {
+    name: "Salinity",
+    short: "SG",
+    value: "1.026",
+    unit: "sg",
+    status: "Stable",
+    trend: "stable",
+    detail: "Target 1.025–1.026",
+  },
+  {
+    name: "Temperature",
+    short: "TEMP",
+    value: "78.0",
+    unit: "°F",
+    status: "Stable",
+    trend: "stable",
+    detail: "Range 77.6–78.4",
+  },
+  {
+    name: "Nitrate",
+    short: "NO₃",
+    value: "25",
+    unit: "ppm",
+    status: "Rising",
+    trend: "up",
+    detail: "+4 ppm this week",
+  },
+  {
+    name: "Phosphate",
+    short: "PO₄",
+    value: "0.10",
+    unit: "ppm",
+    status: "Watch",
+    trend: "up",
+    detail: "+0.02 this week",
+  },
+]
+
+function TrendIcon({ trend }: { trend: string }) {
+  if (trend === "up") {
+    return <ArrowUpRight className="size-3.5" />
+  }
+
+  if (trend === "down") {
+    return <ArrowDownRight className="size-3.5" />
+  }
+
+  return <ArrowRight className="size-3.5" />
+}
 
 export function SectionCards() {
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
-      {/* Temperature */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Temperature</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            78
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +12.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Visitors for the last 6 months
-          </div>
-        </CardFooter>
-      </Card>
-      {/* Salinity */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Salinity</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            1.026
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingDownIcon />
-              -20%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Down 20% this period <TrendingDownIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Acquisition needs attention
-          </div>
-        </CardFooter>
-      </Card>
-      {/* pH */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>pH</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            8.15
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +12.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Strong user retention <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Engagement exceed targets</div>
-        </CardFooter>
-      </Card>
-      {/* Alkalinity */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Alkalinity</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            8.3
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +8.3
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Steady performance increase <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Meets growth projections</div>
-        </CardFooter>
-      </Card>
-      {/* Calcium */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Calcium</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            410
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +12.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Trending up this month <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Visitors for the last 6 months
-          </div>
-        </CardFooter>
-      </Card>
-      {/* Magnesium */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Magnesium</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            1320
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingDownIcon />
-              -20%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Down 20% this period <TrendingDownIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">
-            Acquisition needs attention
-          </div>
-        </CardFooter>
-      </Card>
-      {/* Nitrate (NO₃) */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Nitrate (NO₃)</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            25
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +12.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Strong user retention <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Engagement exceed targets</div>
-        </CardFooter>
-      </Card>
-      {/* Phosphate (PO₄) */}
-      <Card className="@container/card">
-        <CardHeader>
-          <CardDescription>Phosphate (PO₄)</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            0.1
-          </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <TrendingUpIcon />
-              +4.5%
-            </Badge>
-          </CardAction>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Steady performance increase <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">Meets growth projections</div>
-        </CardFooter>
-      </Card>
-    </div>
+    <section className="px-4 lg:px-6">
+      <div className="mb-4 flex items-end justify-between">
+        <div>
+          <p className="text-xs font-medium tracking-[0.16em] text-muted-foreground uppercase">
+            Water chemistry
+          </p>
+
+          <h2 className="mt-1 text-lg font-semibold tracking-tight">
+            Latest parameters
+          </h2>
+        </div>
+
+        <span className="text-xs text-muted-foreground">Updated today</span>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 @3xl/main:grid-cols-4">
+        {parameters.map((parameter) => (
+          <Card
+            key={parameter.name}
+            className="group relative overflow-hidden border-border/60 bg-card/70 p-5 shadow-none backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
+          >
+            <div className="mb-8 flex items-center justify-between">
+              <div>
+                <div className="text-[10px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+                  {parameter.short}
+                </div>
+
+                <div className="mt-1 text-sm text-muted-foreground">
+                  {parameter.name}
+                </div>
+              </div>
+
+              <div
+                className={`flex items-center gap-1 rounded-full px-2 py-1 text-[11px] font-medium ${
+                  parameter.status === "Stable"
+                    ? "bg-primary/8 text-primary"
+                    : "bg-orange-500/10 text-orange-500"
+                } `}
+              >
+                <TrendIcon trend={parameter.trend} />
+                {parameter.status}
+              </div>
+            </div>
+
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-3xl font-semibold tracking-[-0.04em] tabular-nums">
+                {parameter.value}
+              </span>
+
+              {parameter.unit && (
+                <span className="text-sm text-muted-foreground">
+                  {parameter.unit}
+                </span>
+              )}
+            </div>
+
+            <div className="mt-2 text-xs text-muted-foreground">
+              {parameter.detail}
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/30 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+          </Card>
+        ))}
+      </div>
+    </section>
   )
 }

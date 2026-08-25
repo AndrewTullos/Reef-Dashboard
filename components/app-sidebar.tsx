@@ -29,7 +29,7 @@ import {
   DatabaseIcon,
   FileChartColumnIcon,
   FileIcon,
-  CommandIcon,
+  FishSymbol,
 } from "lucide-react"
 
 const data = {
@@ -159,7 +159,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5!"
               render={<a href="#" />}
             >
-              <CommandIcon className="size-5!" />
+              <FishSymbol className="size-5!" />
               <span className="text-base font-semibold">ReefPilot</span>
             </SidebarMenuButton>
           </SidebarMenuItem>

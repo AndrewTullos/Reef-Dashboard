@@ -50,12 +50,12 @@ export function AnimatedSphere() {
           const z = Math.cos(theta)
 
           // Rotate around Y axis
-          const rotY = time * 0.3
+          const rotY = time * 0.1
           const newX = x * Math.cos(rotY) - z * Math.sin(rotY)
           const newZ = x * Math.sin(rotY) + z * Math.cos(rotY)
 
           // Rotate around X axis
-          const rotX = time * 0.2
+          const rotX = time * 0.1
           const newY = y * Math.cos(rotX) - newZ * Math.sin(rotX)
           const finalZ = y * Math.sin(rotX) + newZ * Math.cos(rotX)
 
